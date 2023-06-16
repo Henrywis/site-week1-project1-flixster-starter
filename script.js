@@ -61,7 +61,6 @@ closeSearchBtn.addEventListener("click", () => {
     displayAllPictures();
   });
 
-
 // Function to display all pictures by default
 async function displayAllPictures() {
     try {
@@ -73,28 +72,37 @@ async function displayAllPictures() {
       const movie_temp = container.results;
 
       movieDiv.innerHTML = '';
-  
+
+      const moviesGrid = document.createElement("div"); //making the default page have the movies grid in a div
+      moviesGrid.id = "movies-grid";
+
       movie_temp.forEach(movie => {
-        const img = document.createElement("img");
+        const movieCard = document.createElement("div"); //Each movie will have its movie card in a div
+        movieCard.classList.add("movie-card");           //creating a class for the cards to have a generic edit
+
+        const img = document.createElement("img");       
+        img.classList.add("movie-poster");               //img container storing the poster and having a class to edit generically
         const path = "http://image.tmdb.org/t/p/w154";
         img.src = path + movie.poster_path;
+        movieCard.appendChild(img);                     // Step 3: Add the image url to the moviesCard div
 
         // img.classList.add("movies-grid"); //Implement grid layout, update CSS
         // movieCard.appendChild(img); // Step 3: Add the image url to the moviesDiv
 
-        // const title = document.createElement("h3");
-        // title.classList.add("movie-title");
-        // title.textContent = movie.title;
-        // movieCard.appendChild(title);
+        const title = document.createElement("h3");     //new h3 element for title
+        title.classList.add("movie-title");             //edit all titles in same class
+        title.textContent = movie.title;                //source the titles from the results
+        movieCard.appendChild(title);                   //add each title to each card
   
-        // const votes = document.createElement("p");
-        // votes.classList.add("movie-votes");
-        // votes.textContent = `Votes: ${movie.vote_count}`;
-        // movieCard.appendChild(votes);
+        const votes = document.createElement("p");      //do same for votes
+        votes.classList.add("movie-votes");
+        votes.textContent = `Votes: ${movie.vote_count}`;
+        movieCard.appendChild(votes);
 
-        movieDiv.appendChild(img);
+        moviesGrid.appendChild(movieCard);              //append each card(with complete detail) to the Grids
       });
   
+      movieDiv.appendChild(moviesGrid);                 //fit all complete grids into the div
       console.log(container);
     } catch (error) {
       console.log(error);

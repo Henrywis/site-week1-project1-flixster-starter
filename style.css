@@ -18,10 +18,13 @@ body {
     font-weight: bold; /* Set logo font weight */
 }
   
-/* #movies-grid {
+#movies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(154px, 1fr));
-    grid-gap: 10px; /* Adjust the gap as needed */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: start;
+}
 
 .movie-card {
     display: flex;
@@ -42,8 +45,8 @@ body {
     object-fit: cover;
     border-radius: 5px;
     margin-bottom: 10px;
-    border: #FFFFFF;
-    border-width: 5cap;
+    /* border: #FFFFFF;
+    border-width: 5cap; */
 }
   
 .movie-title {
