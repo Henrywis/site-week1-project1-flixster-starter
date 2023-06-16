@@ -6,9 +6,9 @@ body {
   
 .header {
     color: white; 
-    padding: 20px; /* padding for header content */
+    padding: 20px;                          /* padding for header content */
     text-align: center; 
-    margin-top: 50px; /* Add space between top of the screen and header */
+    margin-top: 50px;                       /* Add space between top of the screen and header */
 }
   
 .header-logo {
@@ -36,6 +36,12 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px hsla(287, 95%, 34%, 0.997);
     margin-bottom: 20px;
+    transition: transform 0.3s ease; 
+}
+
+.movie-card:hover {
+    transform: scale(1.1); 
+    background-color: #626262;
 }
   
 .movie-poster {
@@ -45,8 +51,7 @@ body {
     object-fit: contain;
     border-radius: 5px;
     margin-bottom: 10px;
-    /* border: #FFFFFF;
-    border-width: 5cap; */
+
 }
   
 .movie-title {
@@ -81,5 +86,28 @@ body {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    font-size: 14px; 
+    transition: background-color 0.3s ease;
 }
   
+#closeSearchBtn:hover {
+    background-color: #5e165c; 
+  }
+  
+#load-more-movies-btn {
+    background-color: #3b0835;
+    color: #FFFFFF;
+    border: 2px solid #3b0835;            /* Add border */
+    border-radius: 3px;
+    padding: 10px 20px;                     /* Increase padding for a larger button */
+    cursor: pointer;
+    display: block;                         /* Make the button a block element */
+    margin: 0 auto;                          /* Center alignment */
+    text-align: center;                     /* Center align the button text */
+    font-size: 16px; 
+    transition: background-color 0.3s ease; /* smoother transition */
+  }
+  
+  #load-more-movies-btn:hover {
+    background-color: #5e165c;            /* Changes background color on hover */
+  }
