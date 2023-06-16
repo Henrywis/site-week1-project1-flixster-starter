@@ -27,22 +27,24 @@ body {
 }
 
 .movie-card {
+    width: 250px;
+    height: 380px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    background-color: #FFFFFF;
-    padding: 10px;
+    background-color: #1F1F1F;
+    padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px hsla(298, 95%, 34%, 0.997);
-    margin-bottom: 10px;
+    box-shadow: 0 2px 4px hsla(287, 95%, 34%, 0.997);
+    margin-bottom: 20px;
 }
   
 .movie-poster {
     width: 100%;
     height: auto;
-    max-height: 200px;
-    object-fit: cover;
+    max-height: 280px;
+    object-fit: contain;
     border-radius: 5px;
     margin-bottom: 10px;
     /* border: #FFFFFF;

@@ -1,4 +1,3 @@
-console.log("Hello")
 var searchForm = document.getElementById("searchForm");
 var searchInput = document.getElementById("searchInput");
 var submitBtn = document.getElementById("submitBtn");
@@ -61,6 +60,7 @@ closeSearchBtn.addEventListener("click", () => {
     displayAllPictures();
   });
 
+
 // Function to display all pictures by default
 async function displayAllPictures() {
     try {
@@ -85,9 +85,6 @@ async function displayAllPictures() {
         const path = "http://image.tmdb.org/t/p/w154";
         img.src = path + movie.poster_path;
         movieCard.appendChild(img);                     // Step 3: Add the image url to the moviesCard div
-
-        // img.classList.add("movies-grid"); //Implement grid layout, update CSS
-        // movieCard.appendChild(img); // Step 3: Add the image url to the moviesDiv
 
         const title = document.createElement("h3");     //new h3 element for title
         title.classList.add("movie-title");             //edit all titles in same class
