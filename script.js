@@ -26,10 +26,15 @@ function createMovieCard(movie) {
 
     const votes = document.createElement("p");
     votes.classList.add("movie-votes");
-    votes.textContent = `⭐ Votes: ${movie.vote_average}`;
+    votes.textContent = `⭐ ${movie.vote_average}`;
     movieCard.appendChild(votes);
 
+    movieCard.addEventListener("click", () => {
+        showMovieDetails(movie);
+    });
+
     return movieCard;
+
 }
 
 //function to display result based on search
@@ -133,3 +138,8 @@ loadMoreBtn.addEventListener("click", (event) => {
     event.preventDefault();
     displayAllPictures();
 });
+
+function showMovieDetails(movie) {
+    const movieDetails = `Title: ${movie.title}\n\nOverview: ${movie.overview}\n\nPopularity : ${movie.popularity}`;
+    alert(movieDetails);
+}
