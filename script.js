@@ -1,9 +1,11 @@
 console.log("Hello")
-
+var searchForm = document.getElementById("searchForm");
+var searchInput = document.getElementById("searchInput");
 var submitBtn = document.getElementById("submitBtn");
+var closeSearchBtn = document.getElementById("closeSearchBtn");
 var movieDiv = document.getElementById("movieDiv");
-var searchInput = document.getElementById("searchInput"); 
 
+//function to display result based on search
 submitBtn.addEventListener("click", async (event) => {
     event.preventDefault(); // Prevent form submission (optional)
 
@@ -12,19 +14,38 @@ submitBtn.addEventListener("click", async (event) => {
         const searchTerm = searchInput.value;
         const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&q=${encodeURIComponent(searchTerm)}`; //searchTerm is what is taken in from the user's input
 
-        const response = await fetch(url); // respomse is a string. "{movies: ["tile": "John Wick"]}"
+        const response = await fetch(url); // response is a string. "{movies: ["tile": "John Wick"]}"
         const container = await response.json();
-        const images = container.results;
+        const movie_temp = container.results;
 
-        images.forEach(movie => {
-            const img = document.createElement("img");
+        movieDiv.innerHTML = ''; //clears prev movie cards
+
+        movie_temp.forEach(movie => {
+            const movieCard = document.createElement("div"); //creates a Div element in (thru js) for each movie card
+            movieCard.classList.add("movie-card"); //adds a class to be accessed and styled
+      
+            const img = document.createElement("img"); //creates img element dynamically in js
+            img.classList.add("movie-poster"); // makes the class for img in CSS to be accessed as movie-poster
+
             const path = "http://image.tmdb.org/t/p/w154"
             img.src = path + movie.poster_path;
-            movieDiv.appendChild(img); // Step 3: Add the image url to the moviesDiv
+            //img.classList.add("movies-grid"); //Implement grid layout, update CSS
+            movieCard.appendChild(img); // Step 3: Add the image url to the moviesDiv
+
+            const title = document.createElement("h3");
+            title.classList.add("movie-title");
+            title.textContent = movie.title;
+            movieCard.appendChild(title);
+      
+            const votes = document.createElement("p");
+            votes.classList.add("movie-votes");
+            votes.textContent = `Votes: ${movie.vote_count}`;
+            movieCard.appendChild(votes);
+      
+            movieDiv.appendChild(movieCard);
         });
 
         console.log(container);
-        // console.log(container.results[0].posterpath);
         // Process the data returned from the API
     } catch (error) {
         // Handle any errors that occur during the fetch request
@@ -34,3 +55,51 @@ submitBtn.addEventListener("click", async (event) => {
     // Perform your desired action here
     console.log("Button clicked!");
 })
+
+
+closeSearchBtn.addEventListener("click", () => {
+    displayAllPictures();
+  });
+
+
+// Function to display all pictures by default
+async function displayAllPictures() {
+    try {
+      const apiKey = "26a8b5e8111d2b3fd500afd21defd060";
+      const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
+  
+      const response = await fetch(url);
+      const container = await response.json();
+      const movie_temp = container.results;
+
+      movieDiv.innerHTML = '';
+  
+      movie_temp.forEach(movie => {
+        const img = document.createElement("img");
+        const path = "http://image.tmdb.org/t/p/w154";
+        img.src = path + movie.poster_path;
+
+        // img.classList.add("movies-grid"); //Implement grid layout, update CSS
+        // movieCard.appendChild(img); // Step 3: Add the image url to the moviesDiv
+
+        // const title = document.createElement("h3");
+        // title.classList.add("movie-title");
+        // title.textContent = movie.title;
+        // movieCard.appendChild(title);
+  
+        // const votes = document.createElement("p");
+        // votes.classList.add("movie-votes");
+        // votes.textContent = `Votes: ${movie.vote_count}`;
+        // movieCard.appendChild(votes);
+
+        movieDiv.appendChild(img);
+      });
+  
+      console.log(container);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  // Call the displayAllPictures function to show all pictures by default
+  displayAllPictures();
