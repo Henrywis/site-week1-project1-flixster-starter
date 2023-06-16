@@ -2,7 +2,9 @@ var searchForm = document.getElementById("searchForm");
 var searchInput = document.getElementById("searchInput");
 var submitBtn = document.getElementById("submitBtn");
 var closeSearchBtn = document.getElementById("closeSearchBtn");
+var moviesGrid = document.getElementById("movies-grid");
 var movieDiv = document.getElementById("movieDiv");
+var currentPage = 1;
 
 //function to display result based on search
 submitBtn.addEventListener("click", async (event) => {
@@ -11,7 +13,7 @@ submitBtn.addEventListener("click", async (event) => {
     try {
         const apiKey = "26a8b5e8111d2b3fd500afd21defd060";
         const searchTerm = searchInput.value;
-        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&q=${encodeURIComponent(searchTerm)}`; //searchTerm is what is taken in from the user's input
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&q=${encodeURIComponent(searchTerm)}`; //searchTerm is what is taken in from the user's input
 
         const response = await fetch(url); // response is a string. "{movies: ["tile": "John Wick"]}"
         const container = await response.json();
@@ -28,7 +30,6 @@ submitBtn.addEventListener("click", async (event) => {
 
             const path = "http://image.tmdb.org/t/p/w154"
             img.src = path + movie.poster_path;
-            //img.classList.add("movies-grid"); //Implement grid layout, update CSS
             movieCard.appendChild(img); // Step 3: Add the image url to the moviesDiv
 
             const title = document.createElement("h3");
@@ -44,6 +45,7 @@ submitBtn.addEventListener("click", async (event) => {
             movieDiv.appendChild(movieCard);
         });
 
+        searchInput.value = '';
         console.log(container);
         // Process the data returned from the API
     } catch (error) {
@@ -54,6 +56,25 @@ submitBtn.addEventListener("click", async (event) => {
     // Perform your desired action here
     console.log("Button clicked!");
 })
+
+// Function to display movies for a specific page
+// async function displayMovies(page) {
+//     try {
+//       const apiKey = "26a8b5e8111d2b3fd500afd21defd060";
+//       const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=${page}`;
+  
+//       const response = await fetch(url);
+//       const data = await response.json();
+//       const movies = data.results;
+  
+//       movies.forEach(movie => {
+//         const movieCard = createMovieCard(movie);
+//         moviesGrid.appendChild(movieCard);
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
 
 
 closeSearchBtn.addEventListener("click", () => {
