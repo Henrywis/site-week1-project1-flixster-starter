@@ -6,6 +6,7 @@ var moviesGrid = document.getElementById("movies-grid");
 var loadMoreBtn = document.getElementById("load-more-movies-btn");
 var movieDiv = document.getElementById("movieDiv");
 let currentPage = 1;
+let searchTerm = '';
 
 //Instead of repeating process, create function for movie cards
 function createMovieCard(movie) {
@@ -37,7 +38,7 @@ submitBtn.addEventListener("click", async (event) => {
 
     try {
         const apiKey = "26a8b5e8111d2b3fd500afd21defd060";
-        const searchTerm = searchInput.value;
+        searchTerm = searchInput.value;
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${(searchTerm)}`; //searchTerm is what is taken in from the user's input
 
         const response = await fetch(url);                   // response is a string. "{movies: ["tile": "John Wick"]}"
@@ -68,7 +69,13 @@ submitBtn.addEventListener("click", async (event) => {
 async function displayMovies(page) {
     try {
         const apiKey = "26a8b5e8111d2b3fd500afd21defd060";
-        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${page}`;
+        let url = '';
+
+        if (searchTerm === '') {
+            url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${page}`;
+        } else {
+            url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${(searchTerm)}`;
+        }
 
         const response = await fetch(url);
         const data = await response.json();
