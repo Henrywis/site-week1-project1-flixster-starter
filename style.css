@@ -4,18 +4,16 @@ body {
     background-color: #1F1F1F;
 }
   
-/* Header styling */
 .header {
     color: white; 
     padding: 20px; /* padding for header content */
-    text-align: center; /* Align header text in Center */
+    text-align: center; 
     margin-top: 50px; /* Add space between top of the screen and header */
 }
   
-/* Header logo */
 .header-logo {
-    font-size: 24px; /* Set logo font size */
-    font-weight: bold; /* Set logo font weight */
+    font-size: 24px; 
+    font-weight: bold; 
 }
   
 #movies-grid {
