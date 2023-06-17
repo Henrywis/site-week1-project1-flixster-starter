@@ -41,9 +41,18 @@ Deployed Application (optional): [Flixster Deployed Site](https://henrywis.githu
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, <div style="position: relative; padding-bottom: 64.63195691202873%; height: 0;"><iframe src="https://www.loom.com/embed/aaebeb032d5b4138896ef27d1619e525?sid=be26176e-ceff-4caf-b815-7a261637bb0a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>. Make sure the video or gif actually renders and animates when viewing this README.
+`TODO://` Add the embedded URL code to your animated app walkthrough below, <a href="https://www.loom.com/share/aaebeb032d5b4138896ef27d1619e525">
+    <p>Loom | Free Screen & Video Recording Software | Loom - 16 June 2023 - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/aaebeb032d5b4138896ef27d1619e525-with-play.gif">
+  </a>. 
+  Make sure the video or gif actually renders and animates when viewing this README.
 
 `ADD_EMBEDDED_CODE_HERE`
+
+<a href="https://www.loom.com/share/aaebeb032d5b4138896ef27d1619e525">
+    <p>Loom | Free Screen & Video Recording Software | Loom - 16 June 2023 - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/aaebeb032d5b4138896ef27d1619e525-with-play.gif">
+  </a>
 
 ### Reflection
 
